@@ -163,7 +163,7 @@ let deleteMember = async() => {
       body:JSON.stringify({
           'name':username,
           'room_name': CHANNEL,
-          'UID': UID
+          'uid': UID
       })
   });
   let member = await response.json();
