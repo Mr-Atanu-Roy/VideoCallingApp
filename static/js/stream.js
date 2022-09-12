@@ -2,8 +2,6 @@ const APP_ID = "94b35c0c5d6249c3b458107d3b9d76d7";
 const CHANNEL = sessionStorage.getItem("room");
 const TOKEN = sessionStorage.getItem("token");
 
-const ROOM_NAME = sessionStorage.getItem("roomName");
-
 let username = sessionStorage.getItem("username");
 
 let UID = sessionStorage.getItem("UID");
@@ -16,7 +14,7 @@ let localTracks = [];
 let remoteUsers = {};
 
 let joinAndDisplayLocalStream = async () => {
-  document.getElementById("roomName").innerText = CHANNEL;
+  document.getElementById("CHANNEL").innerText = CHANNEL;
 
   client.on("user-published", handelUserJoined);
   client.on("user-left", handelUserLeft);
@@ -163,7 +161,7 @@ let deleteMember = async() => {
       body:JSON.stringify({
           'name':username,
           'room_name': CHANNEL,
-          'uid': UID
+          'UID': UID
       })
   });
   let member = await response.json();

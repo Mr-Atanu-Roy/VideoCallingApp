@@ -57,7 +57,7 @@ def getMember(request):
 @csrf_exempt
 def deleteMember(request):
     data = json.loads(request.body)
-    member = RoomMember.objects.get(name=data['name'], uid=data['uid'], room_name=data['room_name'])
+    member = RoomMember.objects.get(name=data['name'], uid=data['UID'], room_name=data['room_name'])
     member.delete()
     return JsonResponse({
         'message': 'Member was deleted'
