@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Room{% endblock title %}
+
+
+{% block body %}
+
+
+<section id="room" class="w-full">
+
+    <div id="video-streams">
+    </div>
+
+    <div id="room-label" class="w-full flex items-center justify-evenly px-4">
+        <h3 class="text-xl f-regular" id="CHANNEL"></h3>
+        <div id="meeting-controls" class="flex items-center justify-evenly text-xl">
+            <span class="control-icons mx-2" id="mic"><i class="fa fa-microphone"></i></span>
+            <span class="control-icons mx-2" id="camera"><i class="fa fa-video-camera"></i></span>
+            <span class="control-icons mx-2" id="end-call"><i class="fa fa-phone"></i></span>
+        </div>
+        <div class="flex items-center justify-evenly text-xl">
+            <span class="control-icons mx-2" id="room-name-copy">
+                <i class="fa fa-file-video-o"></i>
+            </span>
+            <span class="control-icons mx-2">
+                <i class="fa fa-users"></i>
+            </span>
+        </div>
+    </div>
+</section>
+
+<script src="/static/agora/AgoraRTC_N-4.14.0.js"></script>
+<script src="/static/js/stream.js"></script>
+
+{% endblock body %}

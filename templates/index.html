@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}Invideo | Home{% endblock title %}
+
+
+{% block body %}
+
+<section class="flex items-center justify-evenly w-full py-12" style="min-height: 100vh;">
+    <form action="POST" class="py-5 px-6 w-2/6 rounded-lg border" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
+        id="form">
+        <div class="flex-col">
+            <div class="flex items-center justify-evenly w-full">
+                <img src="/static/images/icons/logo.png" alt="InVideo" class="w-32">
+                <h1 class="text-6xl f-logo">In<span style="color: rgb(0,140,255);">Video</span></h1>
+            </div>
+            <h3 class="f-light capitalize text-base text-center mt-3">a video calling app designed to boost up your
+                productivity</h3>
+        </div>
+        <hr class="my-6">
+        <div class="w-full">
+            <div class="w-full mb-4">
+                <label class="f-regular block uppercase tracking-wide text-black text-lg font-bold mb-2" for="roomID">
+                    room id <span class="f-light lowercase">(share this with others so that they can join)</span>
+                </label>
+                <input
+                    class="f-regular appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="roomID" type="roomID" placeholder="" value="{{roomID}}" name="roomID" />
+            </div>
+            <div class="w-full mb-4">
+                <label class="f-regular block uppercase tracking-wide text-black text-lg font-bold mb-2" for="roomName">
+                    Room Name
+                </label>
+                <input
+                    class="f-regular appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="roomName" type="roomName" placeholder="John's Personal Meeting" value="{{roomName}}"
+                    name="roomName" />
+            </div>
+            <div class="w-full mb-4">
+                <label class="f-regular block uppercase tracking-wide text-black text-lg font-bold mb-2" for="username">
+                    Username
+                </label>
+                <input
+                    class="f-regular appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                    id="username" type="username" placeholder="John" value="{{username}}" name="username" />
+            </div>
+            <div class="py-4">
+                <button class="my-btn w-full">start meeting</button>
+            </div>
+        </div>
+    </form>
+</section>
+
+<script>
+    let form = document.getElementById('form');
+
+    let handleSubmit = async (e) => {
+        e.preventDefault();
+
+        let username = e.target.username.value;
+        let roomName = e.target.roomName.value.toUpperCase();
+        if (username != "" && roomName != "") {
+            let response = await fetch(`/get_token/?channel=${roomName}`);
+            let data = await response.json();
+
+            let UID = data.uid;
+            let token = data.token;
+
+            sessionStorage.setItem('UID', UID);
+            sessionStorage.setItem('token', token);
+            sessionStorage.setItem('room', roomName);
+            sessionStorage.setItem('username', username);
+
+            window.open('/room/', '_self');
+        }else{
+            alert("Room Name and Username are required");
+        }
+    }
+
+    form.addEventListener('submit', handleSubmit);
+</script>
+
+{% endblock body %}
