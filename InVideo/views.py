@@ -1,6 +1,3 @@
-from msilib.schema import AppId
-from random import random
-from unicodedata import name
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from agora_token_builder import RtcTokenBuilder
@@ -14,6 +11,13 @@ from .models import RoomMember
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
+
+def home(request):
+    return render(request, 'index.html')
+
+def room(request):
+    return render(request, 'room.html')
+
 
 def getToken(request):
     appId  = '94b35c0c5d6249c3b458107d3b9d76d7'
@@ -30,12 +34,6 @@ def getToken(request):
         'token' : token,
         'uid': uid
     }, safe=False)
-
-def home(request):
-    return render(request, 'index.html')
-
-def room(request):
-    return render(request, 'room.html')
 
 
 @csrf_exempt
