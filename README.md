@@ -1,6 +1,6 @@
 ## DESCRIPTION
-    1. Download YouTube Videos in 3 steps
-    2. Created using django
+    1. Start video call with many people
+    2. Created using django and agora sdk
 ## Features
 
 - Real time video call on browser
