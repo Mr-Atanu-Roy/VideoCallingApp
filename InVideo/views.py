@@ -5,7 +5,7 @@ from agora_token_builder import RtcTokenBuilder
 import random
 import time
 import json
-
+import os
 from .models import RoomMember
 
 from django.views.decorators.csrf import csrf_exempt
@@ -20,8 +20,8 @@ def room(request):
 
 
 def getToken(request):
-    appId  = '94b35c0c5d6249c3b458107d3b9d76d7'
-    appCertificate = 'a2db3281a4a243f5be16baf00962300f'
+    appId  = os.environ.get('APP_ID')
+    appCertificate = os.environ.get('APP_CERTIFICATE')
     channelName = request.GET.get('channel')
     uid = random.randint(1, 230)
     expirationTimeInSeconds = 60*60*24
