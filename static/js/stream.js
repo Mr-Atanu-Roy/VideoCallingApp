@@ -1,4 +1,3 @@
-const APP_ID = os.environ.get('APP_ID');
 const CHANNEL = sessionStorage.getItem("room");
 const TOKEN = sessionStorage.getItem("token");
 
