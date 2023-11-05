@@ -5,8 +5,8 @@
 
 - Real time video call on browser
 - Show/Hide video
-- Mute/Unmute mic
-- Create video calling romm with more than one person
+- Mute/Un-mute mic
+- Create video calling room with more than one person
 ## Tech Stack
 
 **Client Side:** HTML, SCSS, TailwindCSS
@@ -23,9 +23,11 @@ To run this project, you will need to add the following environment variables to
 `SECRET_KEY = 'django-insecure-&l1791mq=l$va&&d+2gg0ync(diqqm@*(hows*84!o^@%b2jh='`
 
 ### Agora SDK Credentials
-`APP_ID  = '94b35c0c5d6249c3b458107d3b9d76d7'`
+Signup and get the Agora Credentials from the agora official website
 
-`APP_CERTIFICATE = 'a2db3281a4a243f5be16baf00962300f'`
+`APP_ID  = 'YOUR_APP_ID'`
+
+`APP_CERTIFICATE = 'YOUR_APP_CERTIFICATE'`
 
 ## Installation
 
